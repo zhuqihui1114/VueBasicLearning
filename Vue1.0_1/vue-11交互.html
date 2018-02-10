@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>祝啟辉vue学习笔记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <script src="vue.js"></script>
+    <script src="vue-resource.js"></script>
+    <script>
+        var c = undefined;
+        window.onload = function () {
+            c = new Vue({
+                el: '#box',
+                data: {
+
+                    msg: "msg"
+                },
+                methods: {
+                    get: function () {
+                        this.$http.get('a.txt').then(function (res) {
+                            this.msg = res.data;
+                        }, function (res) {
+                            alert(res.status);
+                        });
+                    },
+                    getJsonp:function(){
+                        this.$http.jsonp('https://sug.so.360.cn/suggest',{
+                            word:'a'
+                        }).then(function(res){
+                            this.msg = res.data.s;
+                        },function(res){
+                            alert(res.status);
+                        });
+                    }
+
+                }
+            });
+        };
+
+    </script>
+</head>
+<body>
+<div id="box">
+    <br>
+    <input type="button" value="按钮" @click="get()">
+    <br>
+    <input type="button" value="jsonp按钮" @click="getJsonp()">
+    <br>
+    {{msg}}
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

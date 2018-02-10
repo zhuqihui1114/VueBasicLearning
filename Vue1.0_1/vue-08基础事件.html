@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>祝啟辉vue学习笔记</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <script src="vue.js"></script>
+    <script>
+        var c = undefined;
+        window.onload=function(){
+            c=new Vue({
+                el:'#box',
+                data:{
+                    arr:['apple','banana','orange','pear'],
+                    json:{a:'apple',b:'banana',c:'orange'},
+                    a:true
+                },
+                methods:{
+                    show:function () {
+                        alert(c.arr);
+                    },
+                    add:function(){
+                        this.arr.push('tomato');
+                    },
+                    remove:function () {
+                        this.arr.pop();
+                    },
+                    hide:function () {
+                        if(this.a){
+                            this.a = false;
+                        }else{
+                            this.a = true;
+                        }
+
+                    }
+                }
+            });
+        };
+
+    </script>
+</head>
+<body>
+    <div id="box">
+        <input type="button" value="show" v-on:click="show()">
+        <input type="button" value="按钮" @click="show()">
+        <br>
+        <input type="button" value="add" v-on:click="add()">
+        <br>
+        <input type="button" value="remove" v-on:dblclick="remove()">
+        <br>
+        <ul>
+            <li v-for="value in arr">
+                {{value}} {{$index}}
+            </li>
+        </ul>
+        <br>
+        <input type="button" value="隐藏" v-on:click="a=false">
+        <input type="button" value="开关" v-on:click="hide()">
+        <div style="width:100px; height:100px; background: red" v-show="a">
+
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

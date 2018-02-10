@@ -2,34 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>智能社——http://www.zhinengshe.com</title>
+    <title>祝啟辉vue学习笔记</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <style>
 
-    </style>
     <script src="vue.js"></script>
     <script>
+        var c = undefined;
         window.onload=function(){
-            new Vue({
+            c=new Vue({
                 el:'#box',
                 data:{
 
+                    msg:"msg"
                 },
                 methods:{
-                    show:function(ev){
-                        alert(1);
+                    show:function (ev) {
+                        this.msg = "右键事件，ev.preventDefault();终止事件默认行为";
                         ev.preventDefault();
+
+                    },
+                    show2:function () {
+                        this.msg = "右键事件，@contextmenu.prevent终止事件默认行为";
+                    },
+                    show3:function () {
+                        this.msg = "弹出原始右键事件菜单"
                     }
+
                 }
             });
         };
+
     </script>
 </head>
 <body>
     <div id="box">
+        右键
+        <br>
+        <input type="button" value="原始右键" @contextmenu="show3">
+        <br>
         <input type="button" value="按钮" @contextmenu="show($event)">
+        <br>
+        <input type="button" value="按钮" @contextmenu.prevent="show2">
+        <br>
+        {{msg}}
     </div>
 </body>
 </html>

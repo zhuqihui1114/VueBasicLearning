@@ -2,32 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>智能社——http://www.zhinengshe.com</title>
+    <title>祝啟辉vue学习笔记</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <style>
-        .red{
+        .class1{
             color: red;
         }
-        .blue{
+        .class2{
             background: blue;
         }
     </style>
     <script src="vue.js"></script>
     <script>
+        var c = undefined;
         window.onload=function(){
-            new Vue({
+            c=new Vue({
                 el:'#box',
                 data:{
+                    a:true,
+                    b:false,
+                    json:{
+                        class1:false,
+                        class2:true
+                    }
+                },
+                methods:{
                 }
             });
         };
+
     </script>
 </head>
 <body>
     <div id="box">
-        {{'WELCOME'|lowercase|capitalize}}
+
+        <strong :class="{class1:a,class2:b}">文字...</strong>
+
+        <strong :class="json">文字...</strong>
     </div>
 </body>
 </html>

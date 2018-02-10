@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>智能社——http://www.zhinengshe.com</title>
+    <title>祝啟辉vue学习笔记</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -11,25 +11,29 @@
     </style>
     <script src="vue.js"></script>
     <script>
+        var c = undefined;
         window.onload=function(){
-            new Vue({
-                el:'#box',
+            c=new Vue({
+                el:'#app-2',
                 data:{
-
-                },
-                methods:{
-                    show:function(ev,b){
-                        alert(ev.clientX);
-                        alert(b);
-                    }
+                    msg:'页面加载于 ' + new Date().toLocaleString()
                 }
             });
+
+
         };
+
     </script>
 </head>
 <body>
-    <div id="box">
-        <input type="button" value="按钮" @click="show(12,$event)">
+    <div id="app-2">
+      <span v-bind:title="msg">
+        鼠标悬停几秒钟查看此处动态绑定的提示信息！v-bind
+      </span>
+        <br>
+      <span :title="msg">
+        鼠标悬停几秒钟查看此处动态绑定的提示信息！
+      </span>
     </div>
 </body>
 </html>
