@@ -16,25 +16,21 @@
 </head>
 <body>
     <div id="box">
-        <input type="text" v-model="a">
-        <ul>
-            <li v-for="val in arr | orderBy a">
-                {{val}}
-            </li>
-        </ul>
+        <span>{{msg}}</span>
+        <br>
+        <span>{{{msg}}}</span>
+        <br>
+        <span v-text="msg"></span>
+        <br>
+        <span v-html="msg"></span>
     </div>
     <script>
-
-        var vm=new Vue({
+        new Vue({
+            el:'#box',
             data:{
-                arr:['width','height','background','orange'],
-                a:''
-            },
-            methods:{
-
+                msg:'<strong>welcome</strong>'
             }
-        }).$mount('#box');
-
+        });
     </script>
 </body>
 </html>

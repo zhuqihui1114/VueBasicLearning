@@ -11,52 +11,28 @@
     </style>
     <script src="vue.js"></script>
     <script>
-        Vue.directive('red',function(){
-            this.el.style.background='red';
-        });
-
-        window.onload=function(){
-            var vm=new Vue({
-                el:'#box',
-                data:{
-                    msg:'welcome'
-                }
-            });
-        };
 
     </script>
 </head>
 <body>
     <div id="box">
-        <span v-red>
-            asdfasd
-        </span>
-        <span v-red>
-            asdfasd
-        </span>
-        <span v-red>
-            asdfasd
-        </span>
+        {{a | toDou 1 2}}
     </div>
+    <script>
+        Vue.filter('toDou',function(input,a,b){
+            alert(a+','+b);
+            return input<10?'0'+input:''+input;
+        });
+        
+        var vm=new Vue({
+            data:{
+                a:9
+            },
+            methods:{
 
+            }
+        }).$mount('#box');
+
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

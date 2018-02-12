@@ -11,48 +11,34 @@
     </style>
     <script src="vue.js"></script>
     <script>
+    //注意：加不加{deep:true}的变化
+
+        window.onload=function(){
+            var vm=new Vue({
+                el:'#box',
+                data:{
+                    json:{name:'strive',age:16},
+                    b:2
+                }
+            });
+
+            vm.$watch('json',function(){
+                alert('发生变化了');
+            },{deep:true});
+
+            document.onclick=function(){
+                vm.json.name='aaa';
+            };
+        };
 
     </script>
 </head>
 <body>
     <div id="box">
-        <span v-text="a"></span>
+        {{json | json}}
         <br>
-        {{aa}}
+        {{b}}
     </div>
-    <script>
 
-        var vm=new Vue({
-            aa:11, //自定义属性,
-            show:function(){
-                alert(1);
-            },
-            data:{
-                a:1
-            }
-        }).$mount('#box');
-
-        vm.$options.show();
-        console.log(vm.$options.aa);
-    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

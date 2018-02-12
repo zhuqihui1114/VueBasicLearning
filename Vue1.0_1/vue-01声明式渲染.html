@@ -19,14 +19,57 @@
                     msg:'welcome vue'
                 }
             });
+
+            c.$el.style.background='red';
+
+            //获取msg方式一
+            console.log(c.$data.msg);
+            //获取msg方式二
+            console.log(c.msg);       
+
+
+            //2、挂载的方式
+            var vm=new Vue({
+                data:{
+                    a:'zqh'
+                }
+            }).$mount('#box2');
+
+
+            //3、自定义属性
+            var v=new Vue({
+                aa:11, //自定义属性,
+                show:function(){
+                    alert(1);
+                },
+                data:{
+                    a:1
+                }
+            }).$mount('#box3');
+
+            //调用自定义属性
+            v.$options.show();
+            console.log(v.$options.aa);
+            //查看data属性json值
+            console.log(v.$log());
         };
 
         //在控制台输入  c.msg="zqh"  查看变化
+        
+
     </script>
 </head>
 <body>
     <div id="box">
         {{msg}}
+    </div>
+    <div id="box2">
+        <span v-text="a"></span>
+    </div>
+    <div id="box3">
+        <span v-text="a"></span>
+        <br>
+        {{aa}}
     </div>
 </body>
 </html>

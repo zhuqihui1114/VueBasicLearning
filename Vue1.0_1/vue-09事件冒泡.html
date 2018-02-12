@@ -47,13 +47,17 @@
             });
         };
 
+        //显示键盘keyCode
+        document.onkeydown=function(ev){
+            console.log(ev.keyCode);
+        };
     </script>
 </head>
 <body>
     <div id="box">
         <div @click="show2()" :style="{backgroundColor:'blue'}">
             <input type="button" value="按钮ev" @click="show($event)">
-            <input type="button" value="按钮click.stop" @click.stop="show3">
+            <input type="button" value="按钮click.stop" @click.stop="show3()">
             {{msg}}
         </div>
 

@@ -11,15 +11,24 @@
     </style>
     <script src="vue.js"></script>
     <script>
-        Vue.directive('a-red',function(){
-            this.el.style.background='red';
-        });
+        //ctrl->17
+        //两秒后调用 | debounce 2000
+        /*document.onkeydown=function(ev){
+            console.log(ev.keyCode);
+        };*/
+        Vue.directive('on').keyCodes.ctrl=17;  //
+        Vue.directive('on').keyCodes.myenter=13;
 
         window.onload=function(){
             var vm=new Vue({
                 el:'#box',
                 data:{
-                    msg:'welcome'
+                    a:'blue'
+                },
+                methods:{
+                    show:function(){
+                        alert(1);
+                    }
                 }
             });
         };
@@ -28,29 +37,8 @@
 </head>
 <body>
     <div id="box">
-        <span a-red>
-            asdfasd
-        </span>
+        <input type="text" @keydown.myenter="show | debounce 2000">
     </div>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

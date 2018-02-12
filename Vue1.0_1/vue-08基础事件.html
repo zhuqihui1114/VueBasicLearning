@@ -52,7 +52,7 @@
         <input type="button" value="remove" v-on:dblclick="remove()">
         <br>
         <ul>
-            <li v-for="value in arr">
+            <li v-for="value in arr" track-by="$index">
                 {{value}} {{$index}}
             </li>
         </ul>

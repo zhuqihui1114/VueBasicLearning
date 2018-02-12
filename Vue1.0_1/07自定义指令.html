@@ -7,20 +7,20 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <style>
-        zns-red{
-            width:100px;
-            background: gray;
-            height:100px;
-            display: block;
-        }
+
     </style>
     <script src="vue.js"></script>
     <script>
-        Vue.elementDirective('zns-red',{
+        Vue.directive('red',function(color){
+            this.el.style.background=color;
+        });
+
+        Vue.directive('default',{
             bind:function(){
                 this.el.style.background='red';
             }
         });
+
 
         window.onload=function(){
             var vm=new Vue({
@@ -35,27 +35,19 @@
 </head>
 <body>
     <div id="box">
-        <zns-red></zns-red>
+        <span v-red="a">
+            asdfasd
+        </span>
+        <br>
+        <span v-red="'red'">
+            asdfasd
+        </span>
+        <br>
+        <span v-default>
+        	默认颜色
+        </span>
     </div>
+
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

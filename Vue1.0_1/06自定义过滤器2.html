@@ -11,53 +11,40 @@
     </style>
     <script src="vue.js"></script>
     <script>
+        //<h2>welcome</h2>
+        Vue.filter('filterHtml',{
+            read:function(input){ //model-view
+                
+                return input.replace(/<[^<]+>/g,'');
+            },
+            write:function(val){ //view -> model
+                console.log(val);
+                return val;
+            }
+        });
 
-
+        var vm= undefined;
         window.onload=function(){
-            var vm=new Vue({
-                el:'#box',
+            vm=new Vue({
                 data:{
-                    json:{name:'strive',age:16},
-                    b:2
+                    msg:'<strong>welcome</strong>'
                 }
-            });
-
-            vm.$watch('json',function(){
-                alert('发生变化了');
-            },{deep:true});
-
-            document.onclick=function(){
-                vm.json.name='aaa';
-            };
+            }).$mount('#box');
         };
 
     </script>
 </head>
 <body>
     <div id="box">
-        {{json | json}}
+        <input type="text" v-model="msg | filterHtml">
         <br>
-        {{b}}
-    </div>
+        {{{msg}}}
+        <br>
+        <div v-html="msg">
 
+        </div>
+    </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
