@@ -50,14 +50,16 @@
                     },
                     afterEnter(el){
                         console.log('动画进入之后');
+                        el.style.background='blue';
                     },
-                    beforeLeave(){
+                    beforeLeave(el){
                         console.log('动画leave之前');
                     },
-                    leave(){
+                    leave(el){
                         console.log('动画leave');
+                        el.style.background='red';
                     },
-                    afterLeave(){
+                    afterLeave(el){
                         console.log('动画leave之后');
                     }
                 }

@@ -21,7 +21,19 @@
             new Vue({
                 el:'#box',
                 data:{
-                    show:false
+                    show:'',
+                    list:['apple','banana','orange','pear']
+                },
+                computed:{
+                    lists(){
+                        var arr=[];
+                        this.list.forEach(function (val){
+                            if(val.indexOf(this.show) != -1){
+                                arr.push(val);
+                            }
+                        }.bind(this));
+                        return arr;
+                    }
                 }
             });
         };
@@ -29,11 +41,12 @@
 </head>
 <body>
     <div id="box">
-        <input type="button" value="点击显示隐藏" @click="show=!show">
+        <input type="text" placeholder="输入apple,banana,orange,pear" v-model="show">
 
         <transition-group enter-active-class="zoomInLeft" leave-active-class="zoomOutRight">
-            <p v-show="show" class="animated" :key="1"></p>
-            <p v-show="show" class="animated" :key="2"></p>
+            <p v-show="show" class="animated" v-for="(val,index) in lists" :key="index">
+                {{val}}
+            </p>
         </transition-group>
     </div>
 </body>
