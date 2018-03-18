@@ -1,3 +1,36 @@
+
+1、bootstrap-demo-zqh 项目演示
+    首先
+     vue init webpack-simple bootstrap-demo-zqh
+     cd bootstrap-demo-zqh
+     npm install
+     npm run dev
+
+    加载需要的框架
+    bower install bootstrap
+
+    在index.html中引入
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+2、elementUI:
+    webpack.config.js 引入字体配置
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader'
+      },
+
+    安装以下组件
+    npm install css-loader -D
+    npm install less -D
+    npm install less-loader -D
+    npm install file-loader -D
+
+
+
+
+
+
+
 vue问题:
 	论坛
 	http://bbs.zhinengshe.com
@@ -60,6 +93,8 @@ elementUI:
 	less:
 		less
 		less-loader
+
+	 npm install file-loader -D
 -------------------------------------------------
 按需加载相应组件:	√
 	就需要 按钮
