@@ -19,6 +19,14 @@
         loader: 'file-loader'
       },
 
+    npm i element-ui -D
+    <==>
+    npm install element-ui --save-dev
+
+    //   i	->    install
+    //   D     ->    --save-dev
+    //   S	->    --save
+
     安装以下组件
     npm install css-loader -D
     npm install less -D
