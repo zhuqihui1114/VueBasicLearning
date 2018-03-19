@@ -56,7 +56,8 @@ export default {
   data () {
     return {
       msg: '',
-      value:''
+      value:'',
+      selected:''
     }
   },
   methods:{
@@ -66,7 +67,7 @@ export default {
       /*axios.get(xxx,{}).then(function(response){
           Indicator.close();
       }).catch()*/
-      
+
       setTimeout(()=>{
         Indicator.close();
       },2000);
