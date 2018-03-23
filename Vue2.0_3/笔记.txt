@@ -33,6 +33,11 @@
     npm install less-loader -D
     npm install file-loader -D
 
+3、Vuex
+    https://vuex.vuejs.org/zh-cn/intro.html
+
+    npm install vuex -D
+
 
 
 
