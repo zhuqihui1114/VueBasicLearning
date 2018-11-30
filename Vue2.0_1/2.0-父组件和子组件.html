@@ -42,8 +42,14 @@
     </template>
 
     <div id="box">
+        <h1>
+            测试vue1.0 子组件与父组件的数据绑定
+        </h1>
         父级: ->{{a}}
         <br>
+        没.sync 同步
+        <child-com :msg="a"></child-com>
+        有.sync 同步
         <child-com :msg.sync="a"></child-com>
     </div>
 </body>

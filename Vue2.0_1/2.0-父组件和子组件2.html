@@ -21,9 +21,14 @@
                     'child-com':{
                         props:['msg'],
                         template:'#child',
+                        data: function () {
+                            return {
+                                counter: this.msg
+                            }
+                        },
                         methods:{
                             change(){
-                                this.msg='被更改了'
+                                this.counter='被更改了'
                             }
                         }
                     }
@@ -37,11 +42,17 @@
         <div>
             <span>我是子组件</span>
             <input type="button" value="按钮" @click="change">
-            <strong>{{msg}}</strong>
+            <br>
+            props：<strong>{{msg}}</strong>
+            <br>
+            data：<strong>{{counter}}</strong>
         </div>
     </template>
 
     <div id="box">
+        <h1>
+            测试vue2.0 子组件与父组件的数据绑定
+        </h1>
         父级: ->{{a}}
         <br>
         <child-com :msg="a"></child-com>

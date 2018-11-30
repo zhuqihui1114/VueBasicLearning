@@ -15,23 +15,27 @@
             new Vue({
                 el:'#box',
                 data:{
-                    a:'我是父组件数据'
+                    fu_a:'我是父组件数据'
+                },
+                methods:{
+                    getZi(val){
+                        this.fu_a = val;
+                    },
+                    change() {
+                        this.fu_a = '父组件数据改变了';
+                    }
                 },
                 components:{
                     'child-com':{
                         data(){
                             return {
-                                b:''
+                                zi_a:'子组件信息'
                             }
                         },
-                        props:['msg'],
                         template:'#child',
-                        mounted(){
-                            this.b=this.msg;
-                        },
                         methods:{
-                            change(){
-                                this.b='被改了';
+                            sendFu(){
+                                this.$emit('child-msg',this.zi_a);
                             }
                         }
                     }
@@ -44,15 +48,17 @@
     <template id="child">
         <div>
             <span>我是子组件</span>
-            <input type="button" value="按钮" @click="change">
-            <strong>{{b}}</strong>
+            <input type="button" value="发送到父组件" @click="sendFu">
+            <br>
+            子组件内的信息：<strong>{{zi_a}}</strong>
         </div>
     </template>
 
     <div id="box">
-        父级: ->{{a}}
+        父级: ->{{fu_a}}
+        <input type="button" value="改变" @click="change">
         <br>
-        <child-com :msg.sync="a"></child-com>
+        <child-com @child-msg="getZi"></child-com>
     </div>
 </body>
 </html>
